@@ -1,0 +1,26 @@
+name:                kontakion
+version:             0.1.0.0
+-- synopsis:            
+-- description:         
+license:             BSD3
+license-file:        LICENSE
+author:              coghex
+maintainer:          vincecoghlan@gmail.com
+-- copyright:           
+category:            Audio
+build-type:          Simple
+extra-source-files:  ChangeLog.md
+cabal-version:       >=1.10
+
+executable kontakion
+  main-is:             Main.hs
+  hs-source-dirs:      src
+  -- other-extensions:    
+  build-depends:       base >=4.9 && <5
+                     , directory
+                     , filepath
+                     , process
+                     , OpenAL
+                     , ALUT
+  default-language:    Haskell2010
+  ghc-options: -O2 -fexcess-precision -threaded -eventlog -rtsopts -feager-blackholing
