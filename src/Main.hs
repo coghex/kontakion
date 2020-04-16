@@ -18,7 +18,7 @@ data Flag = SampleRate String
 
 main :: IO ()
 main = do
-  midi <- createStartMidi
+  midi <- midiNoteTest
   --eMidi <- Midi.importFile "dat/drum.mid"
   --midi <- case eMidi of
   --  Left err -> fail err

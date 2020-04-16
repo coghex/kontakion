@@ -18,3 +18,14 @@ createStartMidi = do
                        , Midi.tracks   = [track0, track1] }
   -- exportFile "start.mid" midi
   return (midi)
+
+midiNoteTest :: IO (Midi.Midi)
+midiNoteTest = return midi
+  where midi = Midi.Midi { Midi.fileType = Midi.MultiTrack
+                         , Midi.timeDiv  = Midi.TicksPerBeat 24
+                         , Midi.tracks   = [track] }
+        track = buildTestTrack 127
+
+buildTestTrack :: Int -> [(Int, Midi.Message)]
+buildTestTrack 0 = [(0, Midi.TrackEnd)]
+buildTestTrack n = [(0, Midi.NoteOn 0 n 100), (24, Midi.NoteOff 0 n 0)] ++ buildTestTrack (n-1)
