@@ -16,6 +16,7 @@ executable kontakion
   main-is:             Main.hs
   hs-source-dirs:      src
   other-modules:       Kontakion.Player
+                       Kontakion.MIDI
                        Kontakion.Synth
                        Kontakion.SynthFunc
                        Kontakion.SynthParams

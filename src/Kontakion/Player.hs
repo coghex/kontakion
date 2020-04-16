@@ -78,10 +78,10 @@ deInitOpenAL device context pSource pBuffers = do
   dequeue pSource
   deleteObjectNames [pSource]
   deleteObjectNames pBuffers
+  printErrs
   currentContext $= Nothing
   destroyContext context
   whenM (not <$> closeDevice device) $ fail "closing OpenAL device"
-  printErrs
     
 data Chunk a = Chunk { chunkData :: Ptr a
                      , numElems  :: Int
@@ -123,7 +123,7 @@ process sampleRate' pSource freeBuffers usedBuffers mVarMaybeChunk mVarReply = d
 
 printErrs :: IO ()
 printErrs = do e <- get alErrors
-               when (not $ null e) . putStrLn $ show e
+               when (not $ null e) $ print e
 
 dequeue :: Source -> IO ()
 dequeue pSource = waitForSource pSource >> buffer pSource $= Nothing
